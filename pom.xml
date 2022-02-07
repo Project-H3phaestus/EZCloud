@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2020 CloudSen
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.hephaestus.ezcloud</groupId>
+  <artifactId>parent</artifactId>
+  <packaging>pom</packaging>
+
+  <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>ezcloud-autoconfigure</module>
+    <module>ezcloud-spring-boot-web-starter</module>
+    <module>ezcloud-spring-boot-redisson-starter</module>
+    <module>ezcloud-spring-boot-es-starter</module>
+    <module>ezcloud-spring-boot-mp-starter</module>
+    <module>ezcloud-spring-cloud-stream-starter</module>
+    <module>ezcloud-util</module>
+    <module>ezcloud-spring-cloud-starter</module>
+    <module>ezcloud-spring-boot-feign-starter</module>
+  </modules>
+
+  <developers>
+    <developer>
+      <name>CloudS3n</name>
+      <email>www.402645063@gmail.com</email>
+      <url>yangyunsen.com</url>
+    </developer>
+  </developers>
+
+  <properties>
+    <encoding>UTF-8</encoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <!--  spring  -->
+    <spring.boot.version>2.6.1</spring.boot.version>
+    <spring.cloud.version>2021.0.0</spring.cloud.version>
+    <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
+    <!--  apache commons  -->
+    <commons.text.version>1.9</commons.text.version>
+    <commons.lang3.version>3.12.0</commons.lang3.version>
+    <commons.io.version>2.9.0</commons.io.version>
+    <commons.collections.version>4.4</commons.collections.version>
+    <commons.codec.version>1.15</commons.codec.version>
+    <commons.pool2.version>2.10.0</commons.pool2.version>
+    <!--  db  -->
+    <hikaricp.version>5.0.0</hikaricp.version>
+    <oracle.driver.version>21.1.0.0</oracle.driver.version>
+    <pgsql.version>42.2.23</pgsql.version>
+    <mysql.version>8.0.27</mysql.version>
+    <!--  mybatis  -->
+    <mybatis.plus.version>3.5.1</mybatis.plus.version>
+    <mybatis.plus.generator.version>3.5.1</mybatis.plus.generator.version>
+    <!--  tools  -->
+    <lombok.version>1.18.20</lombok.version>
+    <hutool.version>5.6.7</hutool.version>
+    <fastjson.version>1.2.78</fastjson.version>
+    <redisson.version>3.15.6</redisson.version>
+    <jcip.annotation.version>1.0</jcip.annotation.version>
+    <easypoi.version>4.4.0</easypoi.version>
+    <log4j2.version>2.15.0</log4j2.version>
+    <!--  plugins  -->
+    <spring.boot.maven.plugin.version>2.4.4</spring.boot.maven.plugin.version>
+    <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+    <mapstruct.version>1.4.2.Final</mapstruct.version>
+    <mapstruct.spring.version>0.1.0</mapstruct.spring.version>
+    <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Spring -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+          </exclusion>
+        </exclusions>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Spring Cloud -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Spring Cloud Alibaba -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring.cloud.alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- ezcloud-util -->
+      <dependency>
+        <groupId>org.hephaestus.ezcloud</groupId>
+        <artifactId>ezcloud-util</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis.plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatis.plus.generator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle.database.jdbc</groupId>
+        <artifactId>ojdbc11</artifactId>
+        <version>${oracle.driver.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle.database.nls</groupId>
+        <artifactId>orai18n</artifactId>
+        <version>${oracle.driver.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons.lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>${commons.text.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
+        <version>${commons.collections.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>${commons.codec.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-pool2</artifactId>
+        <version>${commons.pool2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson-spring-boot-starter</artifactId>
+        <version>${redisson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.jcip</groupId>
+        <artifactId>jcip-annotations</artifactId>
+        <version>${jcip.annotation.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${pgsql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>${hikaricp.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j2.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring.boot.maven.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>uni-snapshot</id>
+      <url>http://x454262h22.qicp.vip:8081/repository/uni-snapshot/</url>
+    </snapshotRepository>
+    <repository>
+      <id>uni-release</id>
+      <url>http://x454262h22.qicp.vip:8081/repository/uni-release/</url>
+    </repository>
+  </distributionManagement>
+</project>

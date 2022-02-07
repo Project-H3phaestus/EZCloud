@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2020 CloudSen
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
+
+<!-- author: CloudS3n -->
+<!-- scan检测配置文件是否有修改，自动重新加载 -->
+<configuration scan="true" scanPeriod="120 seconds" debug="false">
+
+  <!-- 变量配置 -->
+  <springProperty scop="context" name="applicationName"
+                  source="spring.application.name"/>
+  <property name="log.charset" value="UTF-8"/>
+  <property name="log.path"
+            value="${user.dir}/logs"/>
+  <property name="log.pattern"
+            value="${CONSOLE_LOG_PATTERN:-%clr(${LOG_LEVEL_PATTERN:-%p})-%clr(%d{yyyy-MM-dd HH:mm:ss}){faint}-%clr([%thread]){magenta}-%clr(%logger{40}){cyan}:%msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+  <property name="log.error.pattern"
+            value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss}){faint}-%clr([%thread]){magenta}-%clr(%logger{40}){cyan}:%msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+  <!-- 配置文件名 -->
+  <contextName>${applicationName}</contextName>
+
+  <!-- 彩色日志转换配置 -->
+  <conversionRule conversionWord="clr"
+                  converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+  <conversionRule conversionWord="wex"
+                  converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+  <conversionRule conversionWord="wEx"
+                  converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+  <!-- 开发环境 -->
+  <springProfile name="local">
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+      <!-- 忽略debug以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>DEBUG</level>
+      </filter>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="debug">
+      <appender-ref ref="console"/>
+    </root>
+  </springProfile>
+
+  <springProfile name="locala">
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="info">
+      <appender-ref ref="console"/>
+    </root>
+  </springProfile>
+
+  <!-- 测试环境 -->
+  <springProfile name="dev">
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <!-- INFO输出到文件 -->
+    <appender name="info_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.path}/info/info.log</file>
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.path}/info/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>5</maxHistory>
+        <totalSizeCap>500MB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <!-- ERROR输出到文件 -->
+    <appender name="error_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.path}/error/error.log</file>
+      <!-- 忽略ERROR以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>ERROR</level>
+      </filter>
+      <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.path}/error/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>5</maxHistory>
+        <totalSizeCap>500MB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.error.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="info">
+      <appender-ref ref="info_file"/>
+      <appender-ref ref="error_file"/>
+      <appender-ref ref="console"/>
+    </root>
+  </springProfile>
+
+  <!-- 正式环境 -->
+  <springProfile name="prd">
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <!-- INFO输出到文件 -->
+    <appender name="info_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.path}/info/info.log</file>
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.path}/info/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>30</maxHistory>
+        <totalSizeCap>3GB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <!-- ERROR输出到文件 -->
+    <appender name="error_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.path}/error/error.log</file>
+      <!-- 忽略ERROR以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>ERROR</level>
+      </filter>
+      <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.path}/error/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>30</maxHistory>
+        <totalSizeCap>3GB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.error.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="info">
+      <appender-ref ref="info_file"/>
+      <appender-ref ref="error_file"/>
+      <appender-ref ref="console"/>
+    </root>
+  </springProfile>
+
+</configuration>

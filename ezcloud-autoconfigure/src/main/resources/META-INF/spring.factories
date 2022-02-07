@@ -1,0 +1,10 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.hephaestus.ezcloud.autoconfigure.es.EsAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.exception.DefaultExceptionHandlerAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.threadpool.ThreadPoolAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.mybatis.transaction.MpTransactionAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.mybatis.DefaultMybatisPlusAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.redis.DefaultOldRedisAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.mvc.DefaultMvcAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.redis.DefaultRedissonAutoConfiguration, \
+  org.hephaestus.ezcloud.autoconfigure.serializer.SerializerAutoConfiguration
