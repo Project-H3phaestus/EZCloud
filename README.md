@@ -16,7 +16,7 @@
 |______/_____\_____|_|\___/ \__,_|\__,_|
 ```
 
-| English Doc | [中文文档](./README_CHINESE.md) |
+| English Doc | [中文文档](./README_CHINESE.MD) |
 |:-----------:|:---------------------------:|
 
 A spring cloud infrastructure provides various of commonly used cloud components and auto-configurations for high project consistency.
