@@ -42,7 +42,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @RequiredArgsConstructor
 @SuppressWarnings("NullableProblems")
-@ConditionalOnProperty(name = "uni.autoconfigure.enable-mvc", havingValue = "true")
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-mvc", havingValue = "true")
 public class DefaultMvcAutoConfiguration implements WebMvcConfigurer {
 
     static {

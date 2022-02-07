@@ -25,9 +25,10 @@
 
 package org.hephaestus.ezcloud.feign;
 
-import org.hephaestus.ezcloud.feign.properties.AsyncTaskExecutorProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hephaestus.ezcloud.autoconfigure.AutoConfigConstants;
+import org.hephaestus.ezcloud.feign.properties.AsyncTaskExecutorProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -45,7 +46,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 @RequiredArgsConstructor
 @EnableConfigurationProperties({AsyncTaskExecutorProperties.class})
-@ConditionalOnProperty(prefix = "uni.autoconfigure", name = "enable-thread-pool", havingValue = "true")
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-thread-pool", havingValue = "true")
 @ConditionalOnClass(FeignClient.class)
 public class AsyncTaskThreadPoolAutoConfiguration {
 

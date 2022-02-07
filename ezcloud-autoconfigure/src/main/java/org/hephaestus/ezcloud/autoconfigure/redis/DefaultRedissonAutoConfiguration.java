@@ -58,7 +58,7 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(UniRedissonProperties.class)
 @ConditionalOnBean({RedisOperations.class, RedissonClient.class})
-@ConditionalOnProperty(name = "uni.autoconfigure.enable-redisson-cache-manager", havingValue = "true")
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-redisson-cache-manager", havingValue = "true")
 @AutoConfigureAfter(RedissonAutoConfiguration.class)
 @SuppressWarnings({"RedundantThrows", "SpringJavaInjectionPointsAutowiringInspection"})
 public class DefaultRedissonAutoConfiguration {

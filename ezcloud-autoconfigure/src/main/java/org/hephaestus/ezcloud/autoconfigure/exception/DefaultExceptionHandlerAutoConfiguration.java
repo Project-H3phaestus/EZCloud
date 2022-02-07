@@ -47,7 +47,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @ControllerAdvice
-@ConditionalOnProperty(name = "uni.autoconfigure.enable-exception-handler", havingValue = "true")
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-exception-handler", havingValue = "true")
 public class DefaultExceptionHandlerAutoConfiguration {
 
     static {

@@ -53,7 +53,7 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableConfigurationProperties({EsProperties.class})
 @ConditionalOnClass(RestHighLevelClient.class)
-@ConditionalOnProperty(name = "uni.autoconfigure.enable-es", havingValue = "true")
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-es", havingValue = "true")
 public class EsAutoConfiguration {
 
     public EsAutoConfiguration() {

@@ -56,7 +56,7 @@ import java.time.format.DateTimeFormatter;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(name = "uni.autoconfigure.enable-serializer", havingValue = AutoConfigConstants.TRUE)
+@ConditionalOnProperty(prefix = AutoConfigConstants.CONFIG_PREFIX, name = "enable-serializer", havingValue = AutoConfigConstants.TRUE)
 public class SerializerAutoConfiguration {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

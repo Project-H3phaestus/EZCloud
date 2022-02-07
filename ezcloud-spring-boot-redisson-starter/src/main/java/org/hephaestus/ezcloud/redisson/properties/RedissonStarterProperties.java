@@ -26,6 +26,7 @@
 package org.hephaestus.ezcloud.redisson.properties;
 
 import lombok.Data;
+import org.hephaestus.ezcloud.autoconfigure.AutoConfigConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
@@ -39,7 +40,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Validated
 @Component
-@ConfigurationProperties(prefix = "uni.autoconfigure")
+@ConfigurationProperties(prefix = AutoConfigConstants.CONFIG_PREFIX)
 public class RedissonStarterProperties {
 
     @NotNull

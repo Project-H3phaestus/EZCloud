@@ -45,6 +45,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.hephaestus.ezcloud</groupId>
+      <artifactId>ezcloud-autoconfigure</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
