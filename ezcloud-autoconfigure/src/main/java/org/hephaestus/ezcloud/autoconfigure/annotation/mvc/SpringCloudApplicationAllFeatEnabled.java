@@ -47,7 +47,6 @@ import java.lang.annotation.*;
 @Documented
 @MapperScan
 @EnableFeignClients
-@EnableJpaRepositories
 @EntityScan
 @SpringBootApplication
 @EnableCaching

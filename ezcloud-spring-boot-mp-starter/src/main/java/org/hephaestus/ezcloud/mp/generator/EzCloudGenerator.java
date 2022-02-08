@@ -80,7 +80,7 @@ public class EzCloudGenerator {
                 }
             })
             // 包配置
-            .packageConfig((scanner, builder) -> builder.parent(StringUtils.isNotBlank(parentPackage) ? parentPackage : packagePrefix + projectName)
+            .packageConfig((scanner, builder) -> builder.parent(StringUtils.isNotBlank(parentPackage) ? parentPackage : packagePrefix + "." + projectName.toLowerCase().replaceAll("-", ""))
                 .service("business." + businessDomain + ".service")
                 .serviceImpl("business." + businessDomain + ".service.impl")
                 .mapper("business." + businessDomain + ".mapper")
@@ -123,14 +123,15 @@ public class EzCloudGenerator {
         String userDir = System.getProperty("user.dir");
         String projectName = property.getProjectName();
         String businessDomain = property.getBusinessDomain();
+        String packagePathPrefix = property.getPackagePrefix().replaceAll("\\.", File.separator);
         String modulePathPrefix = userDir + File.separator + projectName;
         String businessModuleJavaPath = modulePathPrefix + "-business" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator;
         String businessModuleResourcePath = modulePathPrefix + "-business" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
         String webModulePath = modulePathPrefix + "-web" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator;
         String entityModulePath = modulePathPrefix + "-entity" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator;
-        String businessPkgPath = "cn" + File.separator + "uni" + File.separator + projectName + File.separator + "business" + File.separator + businessDomain + File.separator;
-        String webPkgPath = "cn" + File.separator + "uni" + File.separator + projectName + File.separator + "web" + File.separator + businessDomain + File.separator;
-        String entityPkgPath = "cn" + File.separator + "uni" + File.separator + projectName + File.separator + "entity" + File.separator;
+        String businessPkgPath = packagePathPrefix + File.separator + projectName.replaceAll("-", "") + File.separator + "business" + File.separator + businessDomain + File.separator;
+        String webPkgPath = packagePathPrefix + File.separator + projectName.replaceAll("-", "") + File.separator + "web" + File.separator + businessDomain + File.separator;
+        String entityPkgPath = packagePathPrefix + File.separator + projectName.replaceAll("-", "") + File.separator + "entity" + File.separator;
         String mapperPath = businessModuleJavaPath + businessPkgPath + "mapper";
         String mapperXmlPath = businessModuleResourcePath + "mapper";
         String servicePath = businessModuleJavaPath + businessPkgPath + "service";
@@ -151,9 +152,10 @@ public class EzCloudGenerator {
         String userDir = System.getProperty("user.dir");
         String projectName = property.getProjectName();
         String businessDomain = property.getBusinessDomain();
+        String packagePathPrefix = property.getPackagePrefix().replaceAll("\\.", File.separator);
         String modulePathPrefix = userDir + File.separator + projectName;
         String businessModuleJavaPath = modulePathPrefix + "-business" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator;
-        String businessPkgPath = "cn" + File.separator + "uni" + File.separator + projectName + File.separator + "business" + File.separator + businessDomain + File.separator;
+        String businessPkgPath = packagePathPrefix + File.separator + projectName.replaceAll("-", "") + File.separator + "business" + File.separator + businessDomain + File.separator;
         String businessPath = businessModuleJavaPath + businessPkgPath;
 
         String modelDirPath = businessPath + "model" + File.separator;
