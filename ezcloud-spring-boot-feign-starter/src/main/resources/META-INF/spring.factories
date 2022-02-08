@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hephaestus.ezcloud.feign.AsyncTaskThreadPoolAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.projecthephaestus.ezcloud.feign.AsyncTaskThreadPoolAutoConfiguration

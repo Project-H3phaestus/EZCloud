@@ -29,7 +29,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>parent</artifactId>
-    <groupId>org.hephaestus.ezcloud</groupId>
+    <groupId>io.github.project-h3phaestus</groupId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -38,6 +38,27 @@
 
   <artifactId>ezcloud-spring-boot-feign-starter</artifactId>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/Project-H3phaestus/EZCloud</url>
+    <connection>git@github.com:Project-H3phaestus/EZCloud.git</connection>
+    <developerConnection>https://github.com/Project-H3phaestus/EZCloud</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>CloudS3n</name>
+      <email>www.402645063@gmail.com</email>
+      <url>www.yangyunsen.com</url>
+    </developer>
+  </developers>
+
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
@@ -45,7 +66,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.hephaestus.ezcloud</groupId>
+      <groupId>io.github.project-h3phaestus</groupId>
       <artifactId>ezcloud-autoconfigure</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
@@ -54,7 +75,7 @@
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.hephaestus.ezcloud</groupId>
+      <groupId>io.github.project-h3phaestus</groupId>
       <artifactId>ezcloud-util</artifactId>
       <scope>provided</scope>
     </dependency>

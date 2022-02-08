@@ -28,7 +28,7 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <groupId>org.hephaestus.ezcloud</groupId>
+    <groupId>io.github.project-h3phaestus</groupId>
     <artifactId>parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
@@ -38,6 +38,27 @@
 
   <artifactId>ezcloud-autoconfigure</artifactId>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/Project-H3phaestus/EZCloud</url>
+    <connection>git@github.com:Project-H3phaestus/EZCloud.git</connection>
+    <developerConnection>https://github.com/Project-H3phaestus/EZCloud</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>CloudS3n</name>
+      <email>www.402645063@gmail.com</email>
+      <url>www.yangyunsen.com</url>
+    </developer>
+  </developers>
+
   <properties>
     <encoding>UTF-8</encoding>
     <maven.compiler.source>11</maven.compiler.source>
@@ -46,7 +67,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.hephaestus.ezcloud</groupId>
+      <groupId>io.github.project-h3phaestus</groupId>
       <artifactId>ezcloud-util</artifactId>
       <optional>true</optional>
     </dependency>

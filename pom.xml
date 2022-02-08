@@ -29,7 +29,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.hephaestus.ezcloud</groupId>
+  <groupId>io.github.project-h3phaestus</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
 
@@ -46,11 +46,24 @@
     <module>ezcloud-spring-boot-feign-starter</module>
   </modules>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/Project-H3phaestus/EZCloud</url>
+    <connection>git@github.com:Project-H3phaestus/EZCloud.git</connection>
+    <developerConnection>https://github.com/Project-H3phaestus/EZCloud</developerConnection>
+  </scm>
+
   <developers>
     <developer>
       <name>CloudS3n</name>
       <email>www.402645063@gmail.com</email>
-      <url>yangyunsen.com</url>
+      <url>www.yangyunsen.com</url>
     </developer>
   </developers>
 
@@ -128,7 +141,7 @@
       </dependency>
       <!-- ezcloud-util -->
       <dependency>
-        <groupId>org.hephaestus.ezcloud</groupId>
+        <groupId>io.github.project-h3phaestus</groupId>
         <artifactId>ezcloud-util</artifactId>
         <version>${ezcloud.util.version}</version>
       </dependency>
@@ -235,31 +248,67 @@
     </dependencies>
   </dependencyManagement>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>central-snapshot</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>central-release</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${spring.boot.maven.plugin.version}</version>
-        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven.compiler.plugin.version}</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.3.1</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>uni-snapshot</id>
-      <url>http://x454262h22.qicp.vip:8081/repository/uni-snapshot/</url>
-    </snapshotRepository>
-    <repository>
-      <id>uni-release</id>
-      <url>http://x454262h22.qicp.vip:8081/repository/uni-release/</url>
-    </repository>
-  </distributionManagement>
 </project>

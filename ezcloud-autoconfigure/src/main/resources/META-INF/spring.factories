@@ -1,9 +1,9 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.hephaestus.ezcloud.autoconfigure.es.EsAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.exception.DefaultExceptionHandlerAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.threadpool.ThreadPoolAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.mybatis.transaction.MpTransactionAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.mybatis.DefaultMybatisPlusAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.mvc.DefaultMvcAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.redis.DefaultRedissonAutoConfiguration, \
-  org.hephaestus.ezcloud.autoconfigure.serializer.SerializerAutoConfiguration
+  io.github.projecthephaestus.ezcloud.autoconfigure.es.EsAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.exception.DefaultExceptionHandlerAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.threadpool.ThreadPoolAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.mybatis.transaction.MpTransactionAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.mybatis.DefaultMybatisPlusAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.mvc.DefaultMvcAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.redis.DefaultRedissonAutoConfiguration, \
+  io.github.projecthephaestus.ezcloud.autoconfigure.serializer.SerializerAutoConfiguration
